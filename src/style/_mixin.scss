@@ -1,0 +1,18 @@
+$L: 1200px;
+$M: 992px;
+$S: 768px;
+@mixin mediaQuery($canvas) {
+  @if $canvas == L {
+    @media only screen and (max-width: $L) {
+      @content;
+    }
+  } @else if $canvas == M {
+    @media only screen and (max-width: $M) {
+      @content;
+    }
+  } @else if $canvas == S {
+    @media only screen and (max-width: $S) {
+      @content;
+    }
+  }
+}

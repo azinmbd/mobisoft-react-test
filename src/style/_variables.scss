@@ -1,0 +1,31 @@
+@import "mixin";
+
+$gray: #2b2929;
+$lightGray: #5d5d5d;
+$yellow: #edd101;
+
+.d-flex {
+  display: flex;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  @include mediaQuery(M) {
+    flex-direction: column;
+    .col-lg-12 {
+      width: 100%;
+    }
+  }
+}
+.align-items-center {
+  display: flex;
+  align-items: center;
+}
+
+.col-8 {
+  width: 60%;
+}
+.col-4 {
+  width: 40%;
+}
