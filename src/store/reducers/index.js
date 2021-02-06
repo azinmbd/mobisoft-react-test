@@ -7,11 +7,11 @@ import MoviveDetailReducer from "./MoviveDetailReducer";
 
 export default combineReducers({
   MovieListReducer: persistReducer(
-    { key: "MovieListReducer", storage, whitelist: ["token"] },
+    { key: "MovieListReducer", storage, whitelist: ["data"] },
     MovieListReducer
   ),
   MoviveDetailReducer: persistReducer(
-    { key: "MoviveDetailReducer", storage, whitelist: ["token"] },
+    { key: "MoviveDetailReducer", storage, whitelist: ["state"] },
     MoviveDetailReducer
   ),
 });

@@ -4,13 +4,16 @@ import { fetchMovieList, fetchMovieDetail } from "../store/action";
 
 const MovieList = () => {
   const list = useSelector((state) => state.MovieListReducer.data);
+  const selectedMovieDetail = useSelector(
+    (state) => state.MoviveDetailReducer.data
+  );
   const dispatch = useDispatch();
-
+  console.log(selectedMovieDetail);
   useEffect(() => {
     dispatch(fetchMovieList());
   }, [dispatch]);
 
-  const showDetail = (id) => {
+  const getDetail = (id) => {
     // console.log(id);
     dispatch(fetchMovieDetail(id));
   };
@@ -22,7 +25,7 @@ const MovieList = () => {
           <div
             className="list-box"
             key={item.imdbID}
-            onClick={() => showDetail(item.imdbID)}
+            onClick={() => getDetail(item.imdbID)}
           >
             <img height="100%" src={item.Poster} alt="" />
             <div className="info">
@@ -38,13 +41,13 @@ const MovieList = () => {
 
   return (
     <React.Fragment>
-      <div className="row this-week-list">
-        <div className="col-8 col-lg-12">
-          <h1>This week movies</h1>
-          {renderList()}
-        </div>
-        <div className="col-4 col-lg-12"></div>
+      <div className="row list-title">
+        <h1>This week movies</h1>
       </div>
+      <div className="row">
+        <div className="this-week-list">{renderList()}</div>
+      </div>
+      <div>{selectedMovieDetail.Title ? <div>detail</div> : ""}</div>
     </React.Fragment>
   );
 };
