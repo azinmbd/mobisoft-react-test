@@ -9,9 +9,11 @@ const MovieList = () => {
   const [movieDetail, setMovieDetail] = useState({ selectedItem: null });
 
   const list = useSelector((state) => state.MovieListReducer.data);
+  const searchList = useSelector((state) => state.SearchMovieListReducer.data);
   const selectedItem = useSelector((state) => state.MoviveDetailReducer.data);
+  
   const dispatch = useDispatch();
-
+  console.log(searchList);
   useEffect(() => {
     dispatch(fetchMovieList());
     if (selectedItem.Title) {
@@ -27,10 +29,29 @@ const MovieList = () => {
   };
 
   const renderList = () => {
-    if (list.lenght !== 0) {
-      return list.map((item) => {
-        return <ListItem item={item} getDetail={getDetail} key={item.imdbID} />;
-      });
+      if (list.length !== 0 && searchList.length == 0) {
+        return list.map((item) => {
+          return (
+            <ListItem item={item} getDetail={getDetail} key={item.imdbID} />
+          );
+        });
+      } else if (searchList.length !== 0 && searchList.Response === "True") {
+        return searchList.Search.map((item) => {
+          return (
+            <ListItem item={item} getDetail={getDetail} key={item.imdbID} />
+          );
+        });
+      }
+  };
+  const renderTitle = () => {
+    if (searchList.Response === "True") {
+      if (searchList.length !== 0) {
+        return `${searchList.Search.length} search results`;
+      } 
+    } else if (searchList.Response === "False") {
+      return "No movie was found";
+    }else {
+      return "This week movies";
     }
   };
 
@@ -38,7 +59,7 @@ const MovieList = () => {
     <React.Fragment>
       <div className="row list-title">
         <div className="row search-box d-flex justify-content-between">
-          <h1 className="col-4">This week movies</h1>
+          <h1 className="col-4">{renderTitle()}</h1>
           <SearchBox />
         </div>
       </div>

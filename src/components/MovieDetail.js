@@ -29,7 +29,7 @@ const MovieDetail = (props) => {
                   <h5> {detail.Ratings[1].Value}</h5>
                 </div>
                 <div className="ratings">
-                  <img width="40px" src={RT} alt="" />
+                  <img height="30px" src={RT} alt="" />
                   <h5> {detail.Ratings[2].Value}</h5>
                 </div>
               </div>
