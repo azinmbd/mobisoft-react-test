@@ -3,16 +3,19 @@
 $gray: #2b2929;
 $lightGray: #5d5d5d;
 $yellow: #edd101;
-$fontGray:#a4a4a4;
+$fontGray: #a4a4a4;
 
 .d-flex {
   display: flex;
+}
+.justify-content-between {
+  justify-content: space-between;
 }
 .row {
   display: flex;
   flex-direction: row;
   padding: 20px;
-  @include mediaQuery(S) {
+  @include mediaQuery(M) {
     flex-direction: column;
     .col-lg-12 {
       width: 100%;

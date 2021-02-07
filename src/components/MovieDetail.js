@@ -1,32 +1,54 @@
 import React from "react";
+import CloseSvg from "./svgCode/CloseSvg";
+import IMDB from "../media/imdb.svg";
+import RT from "../media/tomato.svg";
 const MovieDetail = (props) => {
   const { detail } = props;
+
   return (
     <div className="modal-bg">
       <div className="detail-box">
+        <div
+          className="close"
+          onClick={() => {
+            props.removieDeatil();
+          }}
+        >
+          <CloseSvg />
+        </div>
         <div className="row">
-          <div className="col-4">
-            <img width="100%" src={detail.Poster} alt="" />
+          <div className="col-4 col-lg-12">
+            <img className="poster" width="100%" src={detail.Poster} alt="" />
           </div>
-          <div className="col-8">
+          <div className="col-8 col-lg-12">
             <div className="movie-decription">
               <h1>{detail.Title}</h1>
+              <div className="d-flex">
+                <div className="ratings">
+                  <img width="40px" src={IMDB} alt="" />
+                  <h5> {detail.Ratings[1].Value}</h5>
+                </div>
+                <div className="ratings">
+                  <img width="40px" src={RT} alt="" />
+                  <h5> {detail.Ratings[2].Value}</h5>
+                </div>
+              </div>
+              <div className="d-flex justify-content-between">
+                <h3>
+                  Director: <span>{detail.Director}</span>
+                </h3>
+                <h3>
+                  Released: <span>{detail.Released}</span>
+                </h3>
+                <h3>
+                  Runtime: <span>{detail.Runtime}</span>
+                </h3>
+              </div>
 
-              <h2>
-                Director: <span>{detail.Director}</span>
-              </h2>
               <h3>
                 Actors: <span>{detail.Actors}</span>
               </h3>
-              <h3>
-                Type: <span>{detail.Type}</span>
-              </h3>
-              <h4>
-                Released: <span>{detail.Released}</span>
-              </h4>
-              <h5>
-                Runtime: <span>{detail.Runtime}</span>
-              </h5>
+
               <h4>
                 Plot: <span>{detail.Plot}</span>
               </h4>
@@ -42,14 +64,7 @@ const MovieDetail = (props) => {
               <h6>
                 Genre: <span>{detail.Genre}</span>
               </h6>
-              <div className="ratings">
-                <div className="d-flex">
-                  <img src="" alt="" />
-                  <h5>
-                    {detail.Ratings[0].Source}: {detail.Ratings[0].Value}
-                  </h5>
-                </div>
-              </div>
+              <a className="btn"> Watch now</a>
             </div>
           </div>
         </div>

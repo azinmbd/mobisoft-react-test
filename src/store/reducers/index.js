@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 import MovieListReducer from "./MovieListReducer";
 import MoviveDetailReducer from "./MoviveDetailReducer";
+import SearchMovieListReducer from "./SearchMovieListReducer";
 
 export default combineReducers({
   MovieListReducer: persistReducer(
@@ -13,5 +14,9 @@ export default combineReducers({
   MoviveDetailReducer: persistReducer(
     { key: "MoviveDetailReducer", storage, whitelist: ["state"] },
     MoviveDetailReducer
+  ),
+  SearchMovieListReducer: persistReducer(
+    { key: "SearchMovieListReducer", storage, whitelist: ["state"] },
+    SearchMovieListReducer
   ),
 });
