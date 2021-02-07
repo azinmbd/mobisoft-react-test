@@ -28,7 +28,7 @@ const MovieList = () => {
   };
 
   const renderList = () => {
-    if (list.length !== 0 && searchList.length == 0) {
+    if (list.length !== 0 && searchList.length === 0) {
       return list.map((item) => {
         return <ListItem item={item} getDetail={getDetail} key={item.imdbID} />;
       });
