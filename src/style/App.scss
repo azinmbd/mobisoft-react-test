@@ -15,6 +15,9 @@ body {
   h6 {
     font-weight: 300;
   }
+  a {
+    text-decoration: none;
+  }
 }
 
 .menu {
@@ -43,6 +46,11 @@ body {
   width: 100% !important;
   flex-wrap: wrap;
   justify-content: space-between;
+  @include mediaQuery(L) {
+    .list-box {
+      width: 49% !important;
+    }
+  }
   @include mediaQuery(M) {
     flex-wrap: nowrap;
     flex-direction: column;
@@ -50,10 +58,12 @@ body {
       width: 100% !important;
     }
   }
-
+  .btn {
+    margin: 0 auto;
+  }
   .list-box {
     @extend .d-flex;
-    width: 49%;
+    width: 32%;
     margin-bottom: 20px;
     box-shadow: 0 2px 10px black;
     height: 150px;
@@ -178,7 +188,6 @@ body {
 
 .search-box {
   border-bottom: 1px solid $lightGray;
-  width: 100%;
   form {
     input {
       padding: 10px;
@@ -194,6 +203,14 @@ body {
       box-shadow: 0 0 0;
       padding: 6px;
       margin-left: 20px;
+      @extend .align-items-center;
+      justify-content: space-around;
+      &:hover {
+        svg {
+          transition: all 500ms;
+          stroke: white;
+        }
+      }
     }
   }
 }

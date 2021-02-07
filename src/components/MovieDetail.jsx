@@ -1,7 +1,7 @@
 import React from "react";
-import CloseSvg from "./svgCode/CloseSvg";
-import IMDB from "../media/imdb.svg";
-import RT from "../media/tomato.svg";
+import CloseSvg from "./svgCode/CloseIcon";
+import IMDB from "../asset/imdb.svg";
+import RT from "../asset/tomato.svg";
 const MovieDetail = (props) => {
   const { detail } = props;
 

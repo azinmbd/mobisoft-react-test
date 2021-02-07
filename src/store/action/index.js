@@ -20,20 +20,12 @@ export const fetchMovieDetail = (id) => async (dispatch) => {
 };
 
 export const searchMovieList = ({ searchText }) => async (dispatch) => {
-  console.log(searchText);
   const response = await axios.get(
     `http://www.omdbapi.com/?s=${searchText}&page=1&apikey=8ed876dd&type=movie`
   );
-  console.log(response.data);
-  if (response.data.Response === "True") {
-    dispatch({
-      type: "SEARCH_MOVIE_LIST",
-      payload: response.data,
-    });
-  }else{
-    dispatch({
-      type: "SEARCH_MOVIE_LIST",
-      payload: response.data,
-    });
-  }
+
+  dispatch({
+    type: "SEARCH_MOVIE_LIST",
+    payload: response.data,
+  });
 };

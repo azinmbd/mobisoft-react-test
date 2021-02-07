@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchMovieList } from "../store/action";
-
+import SearchIcon from "./svgCode/SearchIcon";
 
 const SearchBox = () => {
   const [searchText, setSearchText] = useState("");
@@ -14,16 +14,17 @@ const SearchBox = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(
-        searchMovieList({
+      searchMovieList({
         searchText,
-      }))
+      })
+    );
     document.getElementById("mainInput").reset();
-    }
+  };
   return (
     <form
       onSubmit={(event) => handleSubmit(event)}
       id="mainInput"
-      className="col-8 align-items-center justify-content-between"
+      className="col-8 col-lg-12 align-items-center justify-content-between"
     >
       <input
         className="form-control mr-sm-2 "
@@ -35,9 +36,9 @@ const SearchBox = () => {
         required
       />
 
-      <button className="btn" type="submit">
+      <button className="btn " type="submit">
         search
-        {/* <SearchIcon /> */}
+        <SearchIcon />
       </button>
     </form>
   );

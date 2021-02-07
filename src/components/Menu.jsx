@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../media/popcorn.svg";
+import logo from "../asset/popcorn.svg";
 const Menu = () => {
   return (
     <div className="menu">
