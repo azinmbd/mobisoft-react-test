@@ -26,11 +26,15 @@ const MovieDetail = (props) => {
               <div className="d-flex">
                 <div className="ratings">
                   <img width="40px" src={IMDB} alt="" />
-                  <h5> {detail.Ratings[1].Value}</h5>
+                  <h5>
+                    {detail.Ratings.length >=2 ? detail.Ratings[1].Value : ""}
+                  </h5>
                 </div>
                 <div className="ratings">
                   <img height="30px" src={RT} alt="" />
-                  <h5> {detail.Ratings[2].Value}</h5>
+                  <h5>
+                    {detail.Ratings.length >=3  ? detail.Ratings[2].Value : ""}
+                  </h5>
                 </div>
               </div>
               <div className="d-flex justify-content-between">
